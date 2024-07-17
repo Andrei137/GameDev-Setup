@@ -13,30 +13,39 @@ set(BUILD_SHARED_LIBS OFF CACHE BOOL "Build SFML as static libraries" FORCE)
 # For imgui-sfml
 set(IMGUI_DIR "${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/imgui-docking/imgui")
 
-if(MSVC) 
+if(MSVC)
 	add_compile_options(/arch:AVX2) # make sure SIMD optimizations take place
+elseif(UNIX)
+	set(OPENAL_INCLUDE_DIR "/usr/include/AL/")
+	set(OPENAL_LIBRARY "/usr/lib/x86_64-linux-gnu/libopenal.so")
+
+    set(VORBIS_INCLUDE_DIR "/usr/include")
+    set(VORBIS_LIBRARIES "/usr/lib/x86_64-linux-gnu/libvorbis.so")
+
+    set(FLAC_INCLUDE_DIR "/usr/include")
+    set(FLAC_LIBRARIES "/usr/lib/x86_64-linux-gnu/libFLAC.so")
+else()
+	# Set OpenAL paths
+	set(OPENAL_INCLUDE_DIR "C:/Program Files (x86)/OpenAL/include")
+	set(OPENAL_LIBRARY "C:/Program Files (x86)/OpenAL/libs/Win64/OpenAL32.lib")
+
+	# Set Vorbis paths
+	set(VORBIS_INCLUDE_DIR "C:/Program Files (x86)/vorbis/include")
+	set(VORBIS_LIBRARY "C:/Program Files (x86)/vorbis/lib/libvorbis.a")
+	set(VORBISENC_LIBRARY "C:/Program Files (x86)/vorbis/lib/libvorbisenc.a")
+	set(VORBISFILE_LIBRARY "C:/Program Files (x86)/vorbis/lib/libvorbisfile.a")
+
+	# Set Ogg paths
+	set(OGG_INCLUDE_DIR "C:/Program Files (x86)/libogg/include")
+	set(OGG_LIBRARY "C:/Program Files (x86)/libogg/lib/libogg.a")
+
+	# Set FLAC paths
+	set(FLAC_INCLUDE_DIR "C:/Program Files (x86)/FLAC/include")
+	set(FLAC_LIBRARY "C:/Program Files (x86)/FLAC/lib/libFLAC.a")
+	set(FLACPP_LIBRARY "C:/Program Files (x86)/FLAC/lib/libFLAC++.a")
 endif()
 
 project(Game)
-
-# Set OpenAL paths
-set(OPENAL_INCLUDE_DIR "C:/Program Files (x86)/OpenAL/include")
-set(OPENAL_LIBRARY "C:/Program Files (x86)/OpenAL/libs/Win64/OpenAL32.lib")
-
-# Set Vorbis paths
-set(VORBIS_INCLUDE_DIR "C:/Program Files (x86)/vorbis/include")
-set(VORBIS_LIBRARY "C:/Program Files (x86)/vorbis/lib/libvorbis.a")
-set(VORBISENC_LIBRARY "C:/Program Files (x86)/vorbis/lib/libvorbisenc.a")
-set(VORBISFILE_LIBRARY "C:/Program Files (x86)/vorbis/lib/libvorbisfile.a")
-
-# Set Ogg paths
-set(OGG_INCLUDE_DIR "C:/Program Files (x86)/libogg/include")
-set(OGG_LIBRARY "C:/Program Files (x86)/libogg/lib/libogg.a")
-
-# Set FLAC paths
-set(FLAC_INCLUDE_DIR "C:/Program Files (x86)/FLAC/include")
-set(FLAC_LIBRARY "C:/Program Files (x86)/FLAC/lib/libFLAC.a")
-set(FLACPP_LIBRARY "C:/Program Files (x86)/FLAC/lib/libFLAC++.a")
 
 # Add SFML
 add_subdirectory(thirdparty/SFML-2.6.1)
@@ -82,7 +91,7 @@ target_link_libraries("${CMAKE_PROJECT_NAME}"
 	sfml-audio 
 	sfml-network
 	imgui
-	ImGui-SFML::ImGui-SFML
+	ImGui-SFML
 	${OPENAL_LIBRARY}
     ${VORBIS_LIBRARY}
     ${VORBISENC_LIBRARY}
