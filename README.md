@@ -4,10 +4,10 @@
   - SFML
 
 ## Structure
-  - ```bin``` is the folder which will contain the executable after building the project
-  - ```resources``` is the folder where all resources are stored
-  - ```scripts``` is the folder where all the scripts are stored
-  - ```src``` is the folder with all C++ files and with CMakeLists.txt
+  - ```bin``` will contain the executable after building the project
+  - ```resources``` stores all resources
+  - ```scripts``` stores all  is the folder where all the scripts are stored
+  - ```src``` stores all C++ files and CMakeLists.txt
     - For GLFW, <kbd>sources/game_layer.cpp</kbd> has the main game loop
     - For SFML/Raylib, <kbd>main.cpp</kbd> has the main game loop
     - <kbd>.cpp</kbd> files go into ```sources```, and <kbd>.h/.hpp</kbd> files go into ```includes```
@@ -37,11 +37,8 @@
       - **CMake:** `<path_to_msvc>/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/bin`
       - **MinGW:** `<path_to_mingw>/bin`
       - **Make:** `<path_to_make>/bin`
-
-#### Linux
-  - WIP
-
-### In case the SFML build fails
+      
+#### In case the SFML build fails
   - You need to install the following
 ##### OpenAL
   - Download [OpenAL](https://www.openal.org/downloads/OpenAL11CoreSDK.zip), extract it and run the exe
@@ -84,17 +81,11 @@
 #### Windows
   - Make sure to edit the MSVC path and version to <kbd>scripts/build.bat</kbd>
   - Run <kbd>scripts/build.bat</kbd>
-  
-#### Linux
-  - WIP
 
 
 ## Running the game
 #### Windows
   - Run <kbd>scripts/run.bat</kbd>
-
-#### Linux
-  - WIP
 
 
 ## Shipping the game
