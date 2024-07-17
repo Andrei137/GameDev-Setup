@@ -7,6 +7,7 @@
   - ```bin``` will contain the executable after building the project
   - ```resources``` stores all resources
   - ```scripts``` stores all  is the folder where all the scripts are stored
+    - If you are using linux, make sure to run ```chmod +x *.sh``` inside this folder to give permissions to the scripts
   - ```src``` stores all C++ files and CMakeLists.txt
     - For GLFW, <kbd>sources/game_layer.cpp</kbd> has the main game loop
     - For SFML/Raylib, <kbd>main.cpp</kbd> has the main game loop
@@ -75,18 +76,38 @@
   - Run `make install` (you need admin privileges)
   - Make sure ```C:/Program Files (x86)/FLAC``` exists
   - If it gets downloaded in another location, make sure to change the path in <kbd>src/CMakeLists.txt</kbd>
-
+  
+#### Linux
+  - Open the ```scripts``` folder
+  - Run <kbd>./install_dependencies.sh</kbd>
+  - You can remove any library from the script if you think there are too many, just make sure you know what to install in case the build fails
+  - This only works on distros with apt-get, make sure to change the package manager if you are using another distro
 
 ## Building the game
 #### Windows
   - Make sure to edit the MSVC path and version to <kbd>scripts/build.bat</kbd>
-  - Run <kbd>scripts/build.bat</kbd>
+  - Open the ```scripts``` folder
+  - Run <kbd>build.bat</kbd>
+
+#### Linux
+  - Open the ```scripts``` folder
+  - Run <kbd>./build.sh</kbd>
 
 
 ## Running the game
 #### Windows
-  - Run <kbd>scripts/run.bat</kbd>
+  - Open the ```scripts``` folder
+  - Run <kbd>run.bat</kbd>
 
+#### Linux
+  - Open the ```scripts``` folder
+  - Run <kbd>./run.sh</kbd>
+  
+#### Script flags
+  - Both scripts allow flags usage
+  - Use -c to clear the screen
+  - Use -b to build the game before running it
+  - Any combination of those flags is allowed
 
 ## Shipping the game
   - In <kbd>src/CMakeLists.txt</kbd>, set the PRODUCTION_BUILD flag to ON to build a shippable version of your game. This will change the file paths to be relative to your exe (RESOURCES_PATH macro), will remove the console, and also will change the aserts to not allow people to debug them
