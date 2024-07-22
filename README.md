@@ -1,7 +1,8 @@
 ## Options
-  - GLFW + OpenGL
-  - Raylib
-  - SFML
+  - [GLFW + OpenGL](https://github.com/Andrei137/GameDev-Setup/tree/GLFW-OpenGL)
+  - [Raylib](https://github.com/Andrei137/GameDev-Setup/tree/Raylib)
+  - [SFML](https://github.com/Andrei137/GameDev-Setup/tree/SFML)
+  - [SDL2](https://github.com/Andrei137/GameDev-Setup/tree/SDL2)
 
 ## Structure
   - ```bin``` will contain the executable after building the project
@@ -10,7 +11,7 @@
     - If you are using linux, make sure to run ```chmod +x *.sh``` inside this folder to give permissions to the scripts
   - ```src``` stores all C++ files and CMakeLists.txt
     - For GLFW, <kbd>sources/game_layer.cpp</kbd> has the main game loop
-    - For SFML/Raylib, <kbd>main.cpp</kbd> has the main game loop
+    - For SFML/Raylib/SDL2, <kbd>main.cpp</kbd> has the main game loop
     - <kbd>.cpp</kbd> files go into ```sources```, and <kbd>.h/.hpp</kbd> files go into ```includes```
     - There is no need to edit <kbd>CMakeLists.txt</kbd> when adding new files
 
@@ -130,6 +131,7 @@
   - [GLFW + OpenGL](https://github.com/meemknight/cmakeSetup)
   - [Raylib](https://github.com/meemknight/raylibCmakeSetup)
   - [SFML](https://github.com/meemknight/SFMLCmakeSetup)
+  - [SDL2](https://github.com/meemknight/SDL2OpenglCMakeSetup)
 
 ### Note
   - This is meant to be used with the build and run scripts, Visual Studio's CMakeLists build is not yet supported. If you want to use it, you might be better off using the original config linked above
